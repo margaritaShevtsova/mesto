@@ -1,0 +1,21 @@
+.element__like-btn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+.element__like-btn:hover {
+    opacity: 0.5;
+}
+
+.element__like-btn:active {
+    opacity: 1;
+}
+
+.element__like-btn:active .element__like-svg path{
+    fill: #000;
+}
