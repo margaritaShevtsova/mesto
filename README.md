@@ -22,3 +22,4 @@ ____
 - Добавить фунцию загрузки новых фото в профиль
 
 ## Ссылка на проект
+https://margaritashevtsova.github.io/mesto/index.html
