@@ -2,10 +2,15 @@
     position: absolute;
     right: -42px;
     top: 15%;
-    padding: 6px;
     border: 1px solid #fff;
     font-size: 0;
+    width: 24px;
+    height: 24px;
     background-color: #000;
+    background-image: url('../../../images/edit-btn.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
     vertical-align: text-bottom;
     cursor: pointer;
     transition: opacity .3s ease-in-out;
@@ -20,5 +25,8 @@
         top: 8%;
         right: -28px;
         padding: 5px;
+        width: 18px;
+        height: 18px;
+        background-size: 7px 7px;
     }
 }
