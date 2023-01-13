@@ -13,12 +13,12 @@
   <div class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form">
-        <input class="popup__input popup__input_content_name" type="text">
-        <input class="popup__input popup__input_content_job" type="text">
-        <button class="popup__submit-btn">Сохранить</button>
+      <form class="popup__form" name="profileForm">
+        <input class="popup__input popup__input_content_name" type="text" name="name">
+        <input class="popup__input popup__input_content_job" type="text" name="profileDescription">
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
       </form>
-      <button class="popup__close-btn"></button>
+      <button class="popup__close-btn" type="button"></button>
     </div>
   </div>
   <header class="header">
@@ -30,8 +30,8 @@
         <img class="profile__avatar" src="./images/profile_image.jpg" alt="Аватар пользователя">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__descr">Исследователь океана</p>
           <button class="profile__edit-btn"></button>
+          <p class="profile__descr">Исследователь океана</p>
         </div>
       </div>
       <button class="profile__add-btn"></button>
@@ -42,51 +42,51 @@
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевска">
           <div class="element__container">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото горы Эльбрус">
           <div class="element__container">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__image" src="./images/dombai.jpg" alt="Фото Домбая">
           <div class="element__container">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__image" src="./images/gora-elbrus.jpg" alt="Фото горы Эльбрус">
           <div class="element__container">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__image" src="./images/dombai.jpg" alt="Фото Домбая">
           <div class="element__container">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевска">
           <div class="element__container">
             <h2 class="element__title">Карачаевo-Черкесия</h2>
-            <button class="element__like-btn"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
         </li>
       </ul>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__copyright">© 2020 Mesto Russia</p>
+    <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
-  <script src="./script/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

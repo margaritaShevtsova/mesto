@@ -1,7 +1,7 @@
 .profile__edit-btn {
-    position: absolute;
-    right: -42px;
-    top: 15%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 18px;
     border: 1px solid #fff;
     font-size: 0;
     width: 24px;
@@ -11,7 +11,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 10px 10px;
-    vertical-align: text-bottom;
+    vertical-align: top;
     cursor: pointer;
     transition: opacity .3s ease-in-out;
 }
@@ -22,8 +22,10 @@
 
 @media screen and (max-width: 765px) {
     .profile__edit-btn {
+        position: absolute;
         top: 8%;
         right: -28px;
+        margin: 0;
         padding: 5px;
         width: 18px;
         height: 18px;
