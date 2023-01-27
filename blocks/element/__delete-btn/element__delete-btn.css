@@ -1,19 +1,22 @@
-.element__like-btn {
+.element__delete-btn {
+    position: absolute;
     margin: 0;
     padding: 0;
     border: none;
     font-size: 0;
-    width: 29px;
-    height: 19px;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
     background-color: transparent;
-    background-image: url('../../../images/Like.svg');
+    background-image: url('../../../images/DeleteCard.svg');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 22px 19px;
+    background-size: 18px 19px;
     cursor: pointer;
     transition: opacity .3s ease-in-out;
 }
 
-.element__like-btn:hover {
+.element__delete-btn:hover {
     opacity: 0.5;
 }
