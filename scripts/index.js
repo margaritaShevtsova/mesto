@@ -3,16 +3,18 @@ const editBtn = document.querySelector('.profile__edit-btn');
 const popupBtns = document.querySelectorAll('.popup__close-btn');
 const profileName = document.querySelector('.profile__name');
 const profileDescr = document.querySelector('.profile__descr');
-const formProfile = popupProfile.querySelector('.popup__form');
+const formProfile = document.forms.profileForm;
 const inputName = formProfile.querySelector('.popup__input_content_name');
 const inputDescr = formProfile.querySelector('.popup__input_content_job');
 const popupCard = document.querySelector('#popup_card');
 const addCardBtn = document.querySelector('.profile__add-btn');
 const inputImageName = popupCard.querySelector('.popup__input_content_image-name');
 const inputImageSrc = popupCard.querySelector('.popup__input_content_image-src');
-const formCard = popupCard.querySelector('.popup__form');
+const formCard = document.forms.cardForm;
 const cardContainer = document.querySelector('.elements__list');
 const popupImage = document.querySelector('#popup_image');
+const photo = popupImage.querySelector('.popup__image');
+const photoTitle = popupImage.querySelector('.popup__image-name');
 
 const initialCards = [
     {
@@ -64,11 +66,12 @@ formCard.addEventListener('submit', function (evt) {
     const cardObject = {};
     cardObject.name = inputImageName.value;
     cardObject.link = inputImageSrc.value;
-    appendCard(cardObject, cardContainer);
+    prependCard(cardObject, cardContainer);
+    evt.target.reset();
     closePopup(popupCard);
 })
 
-formProfile.addEventListener('submit', handleFormSubmit);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -78,7 +81,7 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileDescr.textContent = inputDescr.value;
@@ -105,18 +108,19 @@ function createCard(element) {
     })
 
     cardImage.addEventListener('click', function () {
-        popupImage.querySelector('.popup__image').src = element.link;
-        popupImage.querySelector('.popup__image-name').textContent = element.name;
+        photo.src = element.link;
+        photo.alt = element.name;
+        photoTitle.textContent = element.name;
         openPopup(popupImage);
     })
 
     return cardElement;
 }
 
-function appendCard(element, container) {
+function prependCard(element, container) {
     container.prepend(createCard(element));
 }
 
 for (let card of initialCards) {
-    appendCard(card, cardContainer);
+    prependCard(card, cardContainer);
 }
