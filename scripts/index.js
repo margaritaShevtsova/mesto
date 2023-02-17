@@ -15,6 +15,7 @@ const cardContainer = document.querySelector('.elements__list');
 const popupImage = document.querySelector('#popup_image');
 const photo = popupImage.querySelector('.popup__image');
 const photoTitle = popupImage.querySelector('.popup__image-name');
+const popupList = document.querySelectorAll('.popup');
 
 const initialCards = [
     {
@@ -59,6 +60,24 @@ popupBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
         closePopup(btn.closest('.popup'));
     })
+})
+
+popupList.forEach((popup) => {
+    popup.addEventListener('click', function (evt) {
+        if(evt.target === popup) {
+            closePopup(popup);
+        }
+    })
+})
+
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        popupList.forEach((popup) => {
+            if( popup.classList.contains('popup_opened')) {
+                closePopup(popup);
+            }
+        })
+    }
 })
 
 formCard.addEventListener('submit', function (evt) {
