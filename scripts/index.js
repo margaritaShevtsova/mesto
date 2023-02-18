@@ -56,28 +56,15 @@ addCardBtn.addEventListener('click', function () {
     openPopup(popupCard);
 })
 
-popupBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        closePopup(btn.closest('.popup'));
-    })
-})
-
 popupList.forEach((popup) => {
-    popup.addEventListener('click', function (evt) {
+    popup.addEventListener('mousedown', function (evt) {
         if(evt.target === popup) {
             closePopup(popup);
         }
+        if(evt.target.classList.contains('popup__close-btn')) {
+            closePopup(popup);
+        }
     })
-})
-
-document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-        popupList.forEach((popup) => {
-            if( popup.classList.contains('popup_opened')) {
-                closePopup(popup);
-            }
-        })
-    }
 })
 
 formCard.addEventListener('submit', function (evt) {
@@ -94,10 +81,19 @@ formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEscape); 
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEscape); 
+}
+
+function closeByEscape (evt) {
+    if (evt.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+    }
 }
 
 function handleProfileFormSubmit(evt) {
