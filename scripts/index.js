@@ -1,5 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import { initialCards } from './initialCards.js';
+
 const settings = {
     formSelector: 'popup__form',
     inputSelector: 'popup__input',
@@ -10,7 +12,7 @@ const settings = {
 }
 
 const popupProfile = document.querySelector('#popup_profile');
-const editBtn = document.querySelector('.profile__edit-btn');
+const buttonEditProfile = document.querySelector('.profile__edit-btn');
 const popupBtns = document.querySelectorAll('.popup__close-btn');
 const profileName = document.querySelector('.profile__name');
 const profileDescr = document.querySelector('.profile__descr');
@@ -19,7 +21,7 @@ const formProfileValidator = new FormValidator(settings, '#popup_profile');
 const inputName = formProfile.querySelector('.popup__input_content_name');
 const inputDescr = formProfile.querySelector('.popup__input_content_job');
 const popupCard = document.querySelector('#popup_card');
-const addCardBtn = document.querySelector('.profile__add-btn');
+const buttonAddCard = document.querySelector('.profile__add-btn');
 const inputImageName = popupCard.querySelector('.popup__input_content_image-name');
 const inputImageSrc = popupCard.querySelector('.popup__input_content_image-src');
 const formCard = document.forms.cardForm;
@@ -30,49 +32,21 @@ const photo = popupImage.querySelector('.popup__image');
 const photoTitle = popupImage.querySelector('.popup__image-name');
 const popupList = document.querySelectorAll('.popup');
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 
-editBtn.addEventListener('click', function () {
-    openPopup(popupProfile);
+
+buttonEditProfile.addEventListener('click', function () {
     inputName.value = profileName.textContent;
     inputDescr.value = profileDescr.textContent;
+    openPopup(popupProfile);
 })
 
-addCardBtn.addEventListener('click', function () {
+buttonAddCard.addEventListener('click', function () {
     openPopup(popupCard);
 })
 
 popupList.forEach((popup) => {
     popup.addEventListener('mousedown', function (evt) {
-        if(evt.target === popup) {
-            closePopup(popup);
-        }
-        if(evt.target.classList.contains('popup__close-btn')) {
+        if(evt.target === popup || evt.target.classList.contains('popup__close-btn')) {
             closePopup(popup);
         }
     })
@@ -80,7 +54,7 @@ popupList.forEach((popup) => {
 
 formCard.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const cardObject = new Card(inputImageSrc.value, 
+    const cardObject = createNewCard(inputImageSrc.value, 
         inputImageName.value,
          '#card',
           () => {
@@ -88,7 +62,7 @@ formCard.addEventListener('submit', function (evt) {
             photo.alt = inputImageName.value;
             photoTitle.textContent = inputImageName.value;
             openPopup(popupImage);
-    }).createCard();
+    });
     prependCard(cardObject, cardContainer);
     evt.target.reset();
     closePopup(popupCard);
@@ -120,8 +94,13 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupProfile);
 }
 
+function createNewCard(link, name, templateSelector, openCardImagePreview) {
+    const newCard = new Card (link, name, templateSelector, openCardImagePreview).createCard();
+    return newCard;
+}
+
 function prependCard(element, container) {
-    container.prepend(new Card(element.link, 
+    container.prepend(createNewCard(element.link, 
         element.name,
          '#card',
           () => {
@@ -129,12 +108,12 @@ function prependCard(element, container) {
             photo.alt = element.name;
             photoTitle.textContent = element.name;
             openPopup(popupImage);
-    }).createCard());
+    }));
 }
 
-for (let card of initialCards) {
+initialCards.forEach((card) => {
     prependCard(card, cardContainer);
-}
+})
 
 formProfileValidator.enableValidation();
 cardFormValidator.enableValidation();
