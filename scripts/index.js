@@ -54,15 +54,7 @@ popupList.forEach((popup) => {
 
 formCard.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const cardObject = createNewCard(inputImageSrc.value, 
-        inputImageName.value,
-         '#card',
-          () => {
-            photo.src = inputImageSrc.value;
-            photo.alt = inputImageName.value;
-            photoTitle.textContent = inputImageName.value;
-            openPopup(popupImage);
-    });
+    const cardObject = createNewCard(inputImageSrc.value, inputImageName.value);
     prependCard(cardObject, cardContainer);
     evt.target.reset();
     closePopup(popupCard);
@@ -94,21 +86,19 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupProfile);
 }
 
-function createNewCard(link, name, templateSelector, openCardImagePreview) {
-    const newCard = new Card (link, name, templateSelector, openCardImagePreview).createCard();
+function createNewCard(link, name) {
+    const newCard = new Card (link, name, '#card',
+    () => {
+      photo.src = element.link;
+      photo.alt = element.name;
+      photoTitle.textContent = element.name;
+      openPopup(popupImage);
+}).createCard();
     return newCard;
 }
 
 function prependCard(element, container) {
-    container.prepend(createNewCard(element.link, 
-        element.name,
-         '#card',
-          () => {
-            photo.src = element.link;
-            photo.alt = element.name;
-            photoTitle.textContent = element.name;
-            openPopup(popupImage);
-    }));
+    container.prepend(createNewCard(element.link, element.name));
 }
 
 initialCards.forEach((card) => {
