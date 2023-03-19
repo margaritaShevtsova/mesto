@@ -12,5 +12,5 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 100;
-    transition: visibility 0s, opacity .3s ease-in-out;
+    transition: visibility 0s ease-in-out, opacity 0.3s ease-in-out;
 }
