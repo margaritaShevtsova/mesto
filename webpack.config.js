@@ -13,6 +13,8 @@ module.exports = {
     publicPath: '',
   },
   mode: 'development',
+  entry: ['@babel/polyfill', './src/pages/index.js'],
+  devtool: 'source-map',
   devServer: {
     static: path.resolve(__dirname, './dist'),
     open: true,

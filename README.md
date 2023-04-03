@@ -21,4 +21,4 @@ ____
 - Добавить больше эффектов, проявляющихся при взаимодействии с пользователем
 
 ## Ссылка на проект
-https://margaritashevtsova.github.io/mesto/index.html
+https://margaritaShevtsova.github.io/mesto
