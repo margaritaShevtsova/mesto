@@ -12,13 +12,6 @@ import { validationConfig } from '../constants/constants.js';
 import Api from '../components/Api.js';
 
 const api = new Api({adress: 'https://mesto.nomoreparties.co/v1/cohort-63', token: 'b9e8ef49-0a20-4917-bb19-a478da879e1d'});
-api.getUserInfo()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  }); 
 
 const userinfoObj = await api.getUserInfo();
 const cardContainer = document.querySelector('.elements__list');
