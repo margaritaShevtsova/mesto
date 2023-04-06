@@ -16,6 +16,19 @@
       <button class="popup__close-btn" type="button"></button>
     </div>
   </div>
+
+  <div class="popup" id="popup_avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="avatarForm" novalidate>
+        <input class="popup__input popup__input_content_avatar-src" id="input_content_avatar-src" type="url" name="profileAvatar" required>
+        <span class="popup__error" id="input_content_avatar-src-error"></span>
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close-btn" type="button"></button>
+    </div>
+  </div>
+
   <div class="popup" id="popup_profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -55,7 +68,10 @@
   <main>
     <section class="profile">
       <div class="profile__wrapper">
-        <img class="profile__avatar" src="./images/profile_image.jpg" alt="Аватар пользователя">
+        <button class="profile__avatar-btn">
+          <img class="profile__avatar" alt="Аватар пользователя">
+          <div class="profile__overlay"></div>
+        </button>
         <div class="profile__info">
           <h1 class="profile__name"></h1>
           <button class="profile__edit-btn profile__btn"></button>
