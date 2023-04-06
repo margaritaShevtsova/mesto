@@ -13,7 +13,6 @@ import Api from '../components/Api.js';
 
 const api = new Api({adress: 'https://mesto.nomoreparties.co/v1/cohort-63', token: 'b9e8ef49-0a20-4917-bb19-a478da879e1d'});
 
-const userinfoObj = await api.getUserInfo();
 const cardContainer = document.querySelector('.elements__list');
 const userInfo = new UserInfo({nameSelector: '.profile__name', descrSelector:'.profile__descr', avatarSelector: '.profile__avatar'});
 const buttonEditProfile = document.querySelector('.profile__edit-btn');
@@ -133,16 +132,19 @@ api.getInitialCards()
 .then((res) => {
     const initialCardsList = new Section ({items: res, renderer: (item) => {
         const newCard = createNewCard(item.link, item.name, item.likes.length, item._id);
-        if(item.owner._id !== userinfoObj._id) {
-            newCard.querySelector('.element__delete-btn').classList.add('element__delete-btn_invisible');
-            initialCardsList.addItem(newCard);
-        } else {initialCardsList.addItem(createNewCard(item.link, item.name, item.likes.length, item._id));}
-
-        for ( let likes of item.likes) {
-            if(likes._id === userinfoObj._id) {
-                newCard.querySelector('.element__like-btn').classList.add('element__like-btn_active');
-            }
-        } 
+        api.getUserInfo().then((user) => {
+            if(item.owner._id !== user._id) {
+                newCard.querySelector('.element__delete-btn').classList.add('element__delete-btn_invisible');
+                initialCardsList.addItem(newCard);
+            } else {initialCardsList.addItem(createNewCard(item.link, item.name, item.likes.length, item._id));}
+    
+            for ( let likes of item.likes) {
+                if(likes._id === user._id) {
+                    newCard.querySelector('.element__like-btn').classList.add('element__like-btn_active');
+                }
+            } 
+        })
+        
         
     }}, '.elements__list');
     
