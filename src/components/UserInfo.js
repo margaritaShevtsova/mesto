@@ -10,12 +10,11 @@ export default class UserInfo {
     }
 
     setUserInfo = ({profileName, profileDescription}) => {
-        this._nameElement.textContent = profileName;
-        this._descrElement.textContent = profileDescription;
-        
+        if(profileName) {this._nameElement.textContent = profileName}
+        if(profileDescription) {this._descrElement.textContent = profileDescription}
     }
 
     setAvatar = (profileAvatar) => {
-        this._avatarElement.src = profileAvatar;
+        if(profileAvatar) {this._avatarElement.src = profileAvatar}
     }
 }

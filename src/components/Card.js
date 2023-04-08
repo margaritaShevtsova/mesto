@@ -19,7 +19,6 @@ export default class Card {
         this._cardImage.addEventListener('click', this._openCardImagePreview);
     }
 
-
     createCard() {
         const cardTemplate = document.querySelector(this._templateSelector).content;
         this._cardElement = cardTemplate.querySelector('.element').cloneNode(true);
